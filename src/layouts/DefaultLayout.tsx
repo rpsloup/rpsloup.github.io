@@ -1,3 +1,5 @@
+import PageNavigation from '../components/blocks/PageNavigation';
+
 type Props = {
   children: React.ReactNode;
 };
@@ -5,6 +7,7 @@ type Props = {
 const DefaultLayout = ({ children }: Props) =>
   (
     <>
+      <PageNavigation />
       {children}
     </>
   );
