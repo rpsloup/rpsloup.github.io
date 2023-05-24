@@ -18,13 +18,17 @@
   left: 0px;
   bottom: 28px;
   width: 170px;
-  display: flex;
+  display: none;
   padding: 1px;
   background-color: #c0c0c0;
   border: 1px solid #000000;
   border-top-color: #ffffff;
   border-left-color: #ffffff;
   z-index: 101;
+
+  &--open {
+    display: flex;
+  }
 
   &__line {
     display: flex;
