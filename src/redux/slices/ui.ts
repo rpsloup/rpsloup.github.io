@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
@@ -44,10 +44,29 @@ const uiSlice = createSlice({
       );
     },
     toggleWindowActive: (state, action: PayloadAction<Window['id']>) => {
-      state.windows = current(state.windows).map((window) =>
+      const maxElevation = Math.max(
+        ...state.windows.map((window) => window.elevation)
+      );
+
+      state.startMenuOpen = false;
+      state.windows = state.windows.map((window, index) =>
         window.id === action.payload
-          ? { ...window, active: true }
-          : { ...window, active: false }
+          ? {
+              ...window,
+              active: true,
+              elevation: maxElevation,
+            }
+          : {
+              ...window,
+              active: false,
+              elevation:
+                window.elevation >
+                state.windows.filter(
+                  (window) => window.id === action.payload
+                )[0].elevation
+                  ? state.windows[index].elevation - 1
+                  : window.elevation,
+            }
       );
     },
   },

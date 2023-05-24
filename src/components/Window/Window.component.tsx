@@ -38,6 +38,9 @@ const Window = ({ window, children }: Props): JSX.Element => {
         className={`window${window.active ? ' window--active' : ''}`}
         ref={nodeRef}
         onClick={() => dispatch(toggleWindowActive(window.id))}
+        style={{
+          zIndex: window.elevation || 0,
+        }}
       >
         <div className="window__titlebar">
           <span>{window.title}</span>
