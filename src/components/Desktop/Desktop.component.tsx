@@ -1,5 +1,13 @@
+import React from 'react';
+
 import './Desktop.styles.scss';
 
-const Desktop = (): JSX.Element => <div className="desktop"></div>;
+interface Props {
+  children: React.ReactNode;
+}
+
+const Desktop = ({ children }: Props): JSX.Element => (
+  <div className="desktop">{children}</div>
+);
 
 export default Desktop;
