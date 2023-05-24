@@ -1,9 +1,7 @@
+import Desktop from './components/Desktop';
+
 import './styles/reset.scss';
 
-const App = (): JSX.Element => (
-  <>
-    <h1>App</h1>
-  </>
-);
+const App = (): JSX.Element => <Desktop />;
 
 export default App;
