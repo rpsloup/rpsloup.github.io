@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '../Button';
 
-import { toggleStartMenu } from '../../redux/slices/ui';
+import { toggleStartMenu, createWindow } from '../../redux/slices/ui';
 
 import './Taskbar.styles.scss';
 
@@ -11,6 +11,10 @@ import type { RootState } from '../../redux/store';
 const Taskbar = (): JSX.Element => {
   const { startMenuOpen } = useSelector((state: RootState) => state.ui);
   const dispatch = useDispatch();
+
+  const handleMenuItemPress = () => {
+    dispatch(createWindow());
+  };
 
   return (
     <div className="taskbar">
@@ -21,11 +25,21 @@ const Taskbar = (): JSX.Element => {
           <span>Robin Patrik Sloup</span>
         </div>
         <ul className="taskbar-menu__items">
-          <li className="taskbar-menu__item">Test</li>
-          <li className="taskbar-menu__item">Test</li>
-          <li className="taskbar-menu__item">Test</li>
-          <li className="taskbar-menu__item">Test</li>
-          <li className="taskbar-menu__item">Test</li>
+          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
+            Test
+          </li>
+          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
+            Test
+          </li>
+          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
+            Test
+          </li>
+          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
+            Test
+          </li>
+          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
+            Test
+          </li>
         </ul>
       </div>
       <Button variation="start" onClick={() => dispatch(toggleStartMenu())}>
