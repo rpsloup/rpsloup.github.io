@@ -16,7 +16,9 @@ const Desktop = ({ children }: Props): JSX.Element => {
   return (
     <div className="desktop">
       {windows.map((window) => (
-        <Window key={window.id}>Window</Window>
+        <Window window={window} key={window.id}>
+          Window
+        </Window>
       ))}
       {children}
     </div>

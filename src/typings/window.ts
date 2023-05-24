@@ -1,3 +1,6 @@
 export interface Window {
-  id: number;
+  id: string;
+  title: string;
+  active: boolean;
+  elevation: number;
 }
