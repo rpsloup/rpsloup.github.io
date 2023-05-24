@@ -1,5 +1,3 @@
-import Button from '../Button';
-
 import './Desktop.styles.scss';
 
 interface Props {
@@ -7,10 +5,7 @@ interface Props {
 }
 
 const Desktop = ({ children }: Props): JSX.Element => (
-  <div className="desktop">
-    <Button>My Button</Button>
-    {children}
-  </div>
+  <div className="desktop">{children}</div>
 );
 
 export default Desktop;
