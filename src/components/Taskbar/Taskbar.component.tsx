@@ -30,14 +30,14 @@ const Taskbar = (): JSX.Element => {
         <ul className="taskbar-menu__items">
           <li
             className="taskbar-menu__item"
-            onClick={() => handleCreateWindow(WindowType.TERMINAL)}
+            onClick={() => handleCreateWindow(WindowType.PROJECTS)}
           >
             <img src="/img/projects-icon.png" alt="Icon" />
             <span>Projects</span>
           </li>
           <li
             className="taskbar-menu__item"
-            onClick={() => handleCreateWindow(WindowType.TERMINAL)}
+            onClick={() => handleCreateWindow(WindowType.ABOUT_ME)}
           >
             <img src="/img/about-icon.png" alt="Icon" />
             <span>About me</span>
@@ -58,7 +58,7 @@ const Taskbar = (): JSX.Element => {
           </li>
           <li
             className="taskbar-menu__item"
-            onClick={() => handleCreateWindow(WindowType.TERMINAL)}
+            onClick={() => handleCreateWindow(WindowType.MINESWEEPER)}
           >
             <img src="/img/minesweeper-icon.png" alt="Icon" />
             <span>Minesweeper</span>

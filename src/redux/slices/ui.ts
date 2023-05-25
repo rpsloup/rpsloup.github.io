@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 
+import { MAX_WINDOW_COUNT } from '../../utils/constants';
 import { WindowType } from '../../utils/window';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
@@ -27,6 +28,12 @@ const uiSlice = createSlice({
       state.startMenuOpen = !state.startMenuOpen;
     },
     createWindow: (state, action: PayloadAction<WindowType>) => {
+      if (state.windows.length + 1 > MAX_WINDOW_COUNT) {
+        state.startMenuOpen = false;
+        alert(`You can only have ${MAX_WINDOW_COUNT} windows open at a time!`);
+        return;
+      }
+
       const maxElevation = state.windows.length
         ? Math.max(...state.windows.map((window) => window.elevation))
         : -1;

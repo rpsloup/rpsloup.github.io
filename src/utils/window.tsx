@@ -1,6 +1,7 @@
 import WindowElement from '../components/Window';
 import Terminal from '../components/Terminal';
 import Settings from '../components/Settings';
+import Minesweeper from '../components/Minesweeper';
 
 import type { Window } from '../typings/window';
 
@@ -19,6 +20,9 @@ export const getWindowElementByType = (window: Window): React.ReactNode => {
 
     case WindowType.SETTINGS:
       return <Settings window={window} />;
+
+    case WindowType.MINESWEEPER:
+      return <Minesweeper window={window} />;
 
     default:
       return <WindowElement window={window}>Window</WindowElement>;
