@@ -22,7 +22,13 @@ const uiSlice = createSlice({
     toggleStartMenu: (state) => {
       state.startMenuOpen = !state.startMenuOpen;
     },
-    createWindow: (state) => {
+    createWindow: (
+      state,
+      action: PayloadAction<{
+        title: string;
+        content: JSX.Element;
+      }>
+    ) => {
       const maxElevation = state.windows.length
         ? Math.max(...state.windows.map((window) => window.elevation))
         : -1;
@@ -32,9 +38,10 @@ const uiSlice = createSlice({
         ...state.windows.map((window) => ({ ...window, active: false })),
         {
           id: uuid(),
-          title: 'Window',
+          title: action.payload.title,
           active: true,
           elevation: maxElevation + 1,
+          content: action.payload.content,
         },
       ];
     },

@@ -3,4 +3,5 @@ export interface Window {
   title: string;
   active: boolean;
   elevation: number;
+  content: JSX.Element;
 }

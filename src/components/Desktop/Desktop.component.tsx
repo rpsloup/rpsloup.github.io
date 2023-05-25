@@ -28,7 +28,7 @@ const Desktop = ({ children }: Props): JSX.Element => {
     <div className="desktop" onClick={handleClick}>
       {windows.map((window) => (
         <Window window={window} key={window.id}>
-          Window
+          {window.content}
         </Window>
       ))}
       {children}

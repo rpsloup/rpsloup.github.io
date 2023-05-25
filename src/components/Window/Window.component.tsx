@@ -49,7 +49,7 @@ const Window = ({ window, children }: Props): JSX.Element => {
         }}
       >
         <div className="window__titlebar">
-          <span>{window.title}</span>
+          <span>{window.title || 'Window'}</span>
           <div className="window__titlebar__buttons">
             <button onClick={() => dispatch(closeWindow(window.id))}>
               <img src="/img/cross.png" alt="Cross" />

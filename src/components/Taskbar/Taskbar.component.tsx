@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
+import Terminal from '../Terminal';
 import Button from '../Button';
 
 import { toggleStartMenu, createWindow } from '../../redux/slices/ui';
@@ -12,8 +13,13 @@ const Taskbar = (): JSX.Element => {
   const { startMenuOpen } = useSelector((state: RootState) => state.ui);
   const dispatch = useDispatch();
 
-  const handleMenuItemPress = () => {
-    dispatch(createWindow());
+  const handleCreateWindow = (title: string, content: JSX.Element) => {
+    dispatch(
+      createWindow({
+        title,
+        content,
+      })
+    );
   };
 
   return (
@@ -25,24 +31,46 @@ const Taskbar = (): JSX.Element => {
           <span>Robin Patrik Sloup</span>
         </div>
         <ul className="taskbar-menu__items">
-          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
-            <img src="/img/example-icon.png" alt="Icon" />
-            <span>Test</span>
+          <li
+            className="taskbar-menu__item"
+            onClick={() => handleCreateWindow('Projects', <Terminal />)}
+          >
+            <img src="/img/projects-icon.png" alt="Icon" />
+            <span>Projects</span>
           </li>
-          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
-            <img src="/img/example-icon.png" alt="Icon" />
-            <span>Test</span>
+          <li
+            className="taskbar-menu__item"
+            onClick={() => handleCreateWindow('About me', <Terminal />)}
+          >
+            <img src="/img/about-icon.png" alt="Icon" />
+            <span>About me</span>
           </li>
-          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
+          <li
+            className="taskbar-menu__item"
+            onClick={() => handleCreateWindow('Settings', <Terminal />)}
+          >
             <img src="/img/example-icon.png" alt="Icon" />
-            <span>Test</span>
+            <span>Settings</span>
           </li>
-          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
-            <img src="/img/example-icon.png" alt="Icon" />
-            <span>Test</span>
+          <li
+            className="taskbar-menu__item"
+            onClick={() => handleCreateWindow('Terminal', <Terminal />)}
+          >
+            <img src="/img/terminal-icon.png" alt="Icon" />
+            <span>Terminal</span>
+          </li>
+          <li
+            className="taskbar-menu__item"
+            onClick={() => handleCreateWindow('Minesweeper', <Terminal />)}
+          >
+            <img src="/img/minesweeper-icon.png" alt="Icon" />
+            <span>Minesweeper</span>
           </li>
           <li className="taskbar-menu__separator" />
-          <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
+          <li
+            className="taskbar-menu__item"
+            onClick={() => handleCreateWindow('Shut Down...', <Terminal />)}
+          >
             <img src="/img/shutdown-icon.png" alt="Icon" />
             <span>Shut Down...</span>
           </li>
