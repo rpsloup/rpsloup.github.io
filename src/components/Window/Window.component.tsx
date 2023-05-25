@@ -12,10 +12,11 @@ import type { Window } from '../../typings/window';
 
 interface Props {
   window: Window;
+  title?: string;
   children: React.ReactNode;
 }
 
-const Window = ({ window, children }: Props): JSX.Element => {
+const Window = ({ window, title, children }: Props): JSX.Element => {
   const dispatch = useDispatch();
   const nodeRef = useRef<HTMLDivElement>(null);
 
@@ -49,7 +50,7 @@ const Window = ({ window, children }: Props): JSX.Element => {
         }}
       >
         <div className="window__titlebar">
-          <span>{window.title || 'Window'}</span>
+          <span>{title || 'Window'}</span>
           <div className="window__titlebar__buttons">
             <button onClick={() => dispatch(closeWindow(window.id))}>
               <img src="/img/cross.png" alt="Cross" />

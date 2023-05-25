@@ -1,7 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-
-import Window from '../Window';
+import { Fragment } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { resetWindowFocus } from '../../redux/slices/ui';
 
@@ -10,6 +8,7 @@ import './Desktop.styles.scss';
 import type { MouseEvent } from 'react';
 
 import type { RootState } from '../../redux/store';
+import { getWindowElementByType } from '../../utils/window';
 
 interface Props {
   children: React.ReactNode;
@@ -37,9 +36,7 @@ const Desktop = ({ children }: Props): JSX.Element => {
       }}
     >
       {windows.map((window) => (
-        <Window window={window} key={window.id}>
-          {window.content}
-        </Window>
+        <Fragment key={window.id}>{getWindowElementByType(window)}</Fragment>
       ))}
       {children}
     </div>

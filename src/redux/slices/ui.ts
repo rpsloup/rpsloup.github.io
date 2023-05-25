@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 
+import { WindowType } from '../../utils/window';
+
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import type { Window } from '../../typings/window';
@@ -24,13 +26,7 @@ const uiSlice = createSlice({
     toggleStartMenu: (state) => {
       state.startMenuOpen = !state.startMenuOpen;
     },
-    createWindow: (
-      state,
-      action: PayloadAction<{
-        title: string;
-        content: JSX.Element;
-      }>
-    ) => {
+    createWindow: (state, action: PayloadAction<WindowType>) => {
       const maxElevation = state.windows.length
         ? Math.max(...state.windows.map((window) => window.elevation))
         : -1;
@@ -40,10 +36,9 @@ const uiSlice = createSlice({
         ...state.windows.map((window) => ({ ...window, active: false })),
         {
           id: uuid(),
-          title: action.payload.title,
           active: true,
           elevation: maxElevation + 1,
-          content: action.payload.content,
+          type: action.payload,
         },
       ];
     },
@@ -72,7 +67,7 @@ const uiSlice = createSlice({
                 window.elevation >
                 state.windows.filter(
                   (window) => window.id === action.payload
-                )[0].elevation
+                )[0]?.elevation
                   ? state.windows[index].elevation - 1
                   : window.elevation,
             }
