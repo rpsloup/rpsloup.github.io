@@ -69,6 +69,13 @@ const uiSlice = createSlice({
             }
       );
     },
+    resetWindowFocus: (state) => {
+      state.startMenuOpen = false;
+      state.windows = state.windows.map((window) => ({
+        ...window,
+        active: false,
+      }));
+    },
   },
 });
 
@@ -77,5 +84,6 @@ export const {
   createWindow,
   closeWindow,
   toggleWindowActive,
+  resetWindowFocus,
 } = uiSlice.actions;
 export default uiSlice.reducer;

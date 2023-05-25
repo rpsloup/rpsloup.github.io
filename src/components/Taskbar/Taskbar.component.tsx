@@ -26,19 +26,25 @@ const Taskbar = (): JSX.Element => {
         </div>
         <ul className="taskbar-menu__items">
           <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
-            Test
+            <img src="/img/example-icon.png" alt="Icon" />
+            <span>Test</span>
           </li>
           <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
-            Test
+            <img src="/img/example-icon.png" alt="Icon" />
+            <span>Test</span>
           </li>
           <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
-            Test
+            <img src="/img/example-icon.png" alt="Icon" />
+            <span>Test</span>
           </li>
           <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
-            Test
+            <img src="/img/example-icon.png" alt="Icon" />
+            <span>Test</span>
           </li>
+          <li className="taskbar-menu__separator" />
           <li className="taskbar-menu__item" onClick={handleMenuItemPress}>
-            Test
+            <img src="/img/shutdown-icon.png" alt="Icon" />
+            <span>Shut Down...</span>
           </li>
         </ul>
       </div>

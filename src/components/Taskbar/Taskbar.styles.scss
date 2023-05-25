@@ -51,6 +51,7 @@
   &__item {
     display: flex;
     align-items: center;
+    gap: 6px;
     padding: 0 9px;
     height: 36px;
     cursor: pointer;
@@ -59,5 +60,13 @@
       background-color: #000080;
       color: #ffffff;
     }
+  }
+
+  &__separator {
+    margin: 0 2px;
+    width: calc(100% - 4px);
+    height: 2px;
+    background-color: #808080;
+    border-bottom: 1px solid #ffffff;
   }
 }

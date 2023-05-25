@@ -6,6 +6,8 @@ import { closeWindow, toggleWindowActive } from '../../redux/slices/ui';
 
 import './Window.styles.scss';
 
+import type { DraggableEvent } from 'react-draggable';
+
 import type { Window } from '../../typings/window';
 
 interface Props {
@@ -21,6 +23,10 @@ const Window = ({ window, children }: Props): JSX.Element => {
     dispatch(toggleWindowActive(window.id));
   };
 
+  const dragHandler = (e: DraggableEvent) => {
+    e.stopPropagation();
+  };
+
   useEffect(() => {
     nodeRef &&
       nodeRef.current &&
@@ -33,7 +39,7 @@ const Window = ({ window, children }: Props): JSX.Element => {
   }, []);
 
   return (
-    <Draggable nodeRef={nodeRef}>
+    <Draggable nodeRef={nodeRef} onDrag={dragHandler}>
       <div
         className={`window${window.active ? ' window--active' : ''}`}
         ref={nodeRef}
