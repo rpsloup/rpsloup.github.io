@@ -16,7 +16,9 @@ interface Props {
 }
 
 const Desktop = ({ children }: Props): JSX.Element => {
-  const { windows } = useSelector((state: RootState) => state.ui);
+  const { windows, currentBackground } = useSelector(
+    (state: RootState) => state.ui
+  );
   const dispatch = useDispatch();
 
   const handleClick = (e: MouseEvent) => {
@@ -25,7 +27,15 @@ const Desktop = ({ children }: Props): JSX.Element => {
   };
 
   return (
-    <div className="desktop" onClick={handleClick}>
+    <div
+      className="desktop"
+      onClick={handleClick}
+      style={{
+        backgroundImage: currentBackground
+          ? `url('${currentBackground}')`
+          : undefined,
+      }}
+    >
       {windows.map((window) => (
         <Window window={window} key={window.id}>
           {window.content}

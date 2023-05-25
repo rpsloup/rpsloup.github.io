@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
+import Separator from '../Separator';
+import Settings from '../Settings';
 import Terminal from '../Terminal';
 import Button from '../Button';
 
@@ -47,7 +49,7 @@ const Taskbar = (): JSX.Element => {
           </li>
           <li
             className="taskbar-menu__item"
-            onClick={() => handleCreateWindow('Settings', <Terminal />)}
+            onClick={() => handleCreateWindow('Settings', <Settings />)}
           >
             <img src="/img/example-icon.png" alt="Icon" />
             <span>Settings</span>
@@ -66,7 +68,7 @@ const Taskbar = (): JSX.Element => {
             <img src="/img/minesweeper-icon.png" alt="Icon" />
             <span>Minesweeper</span>
           </li>
-          <li className="taskbar-menu__separator" />
+          <Separator verticalSpacing={8} horizontalSpacing={2} />
           <li
             className="taskbar-menu__item"
             onClick={() => handleCreateWindow('Shut Down...', <Terminal />)}

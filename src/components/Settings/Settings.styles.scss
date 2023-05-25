@@ -1,0 +1,17 @@
+.settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  height: 100%;
+
+  p {
+    margin-bottom: 4px;
+  }
+
+  &__buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+}

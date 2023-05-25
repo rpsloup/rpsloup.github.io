@@ -56,7 +56,7 @@ const Window = ({ window, children }: Props): JSX.Element => {
             </button>
           </div>
         </div>
-        {children}
+        <div className="window__content">{children}</div>
       </div>
     </Draggable>
   );

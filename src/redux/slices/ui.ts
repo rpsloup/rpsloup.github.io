@@ -8,11 +8,13 @@ import type { Window } from '../../typings/window';
 interface InitialStateDefaultObject {
   startMenuOpen: boolean;
   windows: Window[];
+  currentBackground: string | null;
 }
 
 const INITIAL_STATE: InitialStateDefaultObject = {
   startMenuOpen: false,
   windows: [],
+  currentBackground: null,
 };
 
 const uiSlice = createSlice({
@@ -83,6 +85,9 @@ const uiSlice = createSlice({
         active: false,
       }));
     },
+    setCurrentBackground: (state, action: PayloadAction<string>) => {
+      state.currentBackground = action.payload;
+    },
   },
 });
 
@@ -92,5 +97,6 @@ export const {
   closeWindow,
   toggleWindowActive,
   resetWindowFocus,
+  setCurrentBackground,
 } = uiSlice.actions;
 export default uiSlice.reducer;
